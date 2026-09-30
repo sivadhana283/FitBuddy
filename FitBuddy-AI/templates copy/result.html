@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+<section class="card">
+
+    <p class="eyebrow">
+        PERSONALIZED PLAN
+    </p>
+
+
+    <h1>
+        Hello, {{ user.name }}!
+    </h1>
+
+
+    <div class="profile-grid">
+
+
+        <div>
+
+            <span>
+                User ID
+            </span>
+
+            <strong>
+                {{ user.user_id }}
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                Age
+            </span>
+
+            <strong>
+                {{ user.age }}
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                Weight
+            </span>
+
+            <strong>
+                {{ user.weight_kg }} kg
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                Goal
+            </span>
+
+            <strong>
+                {{ user.goal }}
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                Intensity
+            </span>
+
+            <strong>
+                {{ user.intensity }}
+            </strong>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<section class="card">
+
+    <h2>
+        7-Day Workout Plan
+    </h2>
+
+
+    <pre class="plan">{{ display_plan }}</pre>
+
+</section>
+
+
+<section class="card">
+
+    <h2>
+        Nutrition / Recovery Tip
+    </h2>
+
+
+    <p>
+        {{ plan.nutrition_tip }}
+    </p>
+
+</section>
+
+
+<section class="card">
+
+    <h2>
+        Refine Your Plan
+    </h2>
+
+
+    <p>
+        Tell FitBuddy what you would like changed.
+    </p>
+
+
+    <form
+        method="post"
+        action="/submit-feedback"
+    >
+
+        <input
+            type="hidden"
+            name="user_id"
+            value="{{ user.user_id }}"
+        >
+
+
+        <textarea
+            name="feedback"
+            maxlength="1000"
+            required
+            placeholder="Example: add more mobility and make one day lighter"
+        ></textarea>
+
+
+        <button
+            class="button secondary"
+            type="submit"
+        >
+
+            Update Plan
+
+        </button>
+
+    </form>
+
+</section>
+
+
+<a
+    class="text-link"
+    href="/"
+>
+
+    Create another plan
+
+</a>
+
+
+{% endblock %}

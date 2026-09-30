@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<section class="hero">
+
+    <div>
+
+        <p class="eyebrow">
+            AI-POWERED WELLNESS
+        </p>
+
+        <h1>
+            Your 7-Day Fitness Plan
+        </h1>
+
+        <p class="lead">
+            Create a structured workout and
+            recovery plan with Gemini.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="card">
+
+    <h2>
+        Tell us about you
+    </h2>
+
+
+    <form
+        method="post"
+        action="/generate-workout"
+        class="form-grid"
+    >
+
+
+        <label>
+
+            Name
+
+            <input
+                name="name"
+                maxlength="100"
+                required
+                placeholder="Your name"
+            >
+
+        </label>
+
+
+        <label>
+
+            User ID
+
+            <input
+                name="user_id"
+                maxlength="80"
+                required
+                placeholder="e.g. U001"
+            >
+
+        </label>
+
+
+        <label>
+
+            Age
+
+            <input
+                name="age"
+                type="number"
+                min="13"
+                max="100"
+                required
+            >
+
+        </label>
+
+
+        <label>
+
+            Weight (kg)
+
+            <input
+                name="weight_kg"
+                type="number"
+                min="1"
+                max="500"
+                step="0.1"
+                required
+            >
+
+        </label>
+
+
+        <label>
+
+            Fitness goal
+
+            <select
+                name="goal"
+                required
+            >
+
+                <option value="general wellness">
+                    General wellness
+                </option>
+
+                <option value="weight loss">
+                    Weight loss
+                </option>
+
+                <option value="muscle gain">
+                    Muscle gain
+                </option>
+
+                <option value="flexibility">
+                    Flexibility
+                </option>
+
+            </select>
+
+        </label>
+
+
+        <label>
+
+            Workout intensity
+
+            <select
+                name="intensity"
+                required
+            >
+
+                <option value="low">
+                    Low
+                </option>
+
+                <option
+                    value="medium"
+                    selected
+                >
+                    Medium
+                </option>
+
+                <option value="high">
+                    High
+                </option>
+
+            </select>
+
+        </label>
+
+
+        <button
+            class="button primary"
+            type="submit"
+        >
+
+            Generate Plan
+
+        </button>
+
+
+    </form>
+
+</section>
+
+
+<section class="notice">
+
+    <strong>
+        Safety first:
+    </strong>
+
+    AI suggestions are general wellness information.
+
+    Stop if you feel pain, dizziness,
+    unusual shortness of breath or feel unwell.
+
+</section>
+
+{% endblock %}

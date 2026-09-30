@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<section class="card narrow">
+
+    <h1>
+        Update your plan
+    </h1>
+
+
+    <form
+        method="post"
+        action="/submit-feedback"
+    >
+
+        <label>
+
+            User ID
+
+            <input
+                name="user_id"
+                value="{{ user_id or '' }}"
+                required
+            >
+
+        </label>
+
+
+        <label>
+
+            Feedback
+
+            <textarea
+                name="feedback"
+                maxlength="1000"
+                required
+                placeholder="What should change?"
+            ></textarea>
+
+        </label>
+
+
+        <button
+            class="button primary"
+            type="submit"
+        >
+
+            Update Plan
+
+        </button>
+
+    </form>
+
+</section>
+
+{% endblock %}

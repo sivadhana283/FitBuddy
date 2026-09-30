@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+<section class="card">
+
+    <p class="eyebrow">
+        ADMIN DASHBOARD
+    </p>
+
+
+    <h1>
+        All Users
+    </h1>
+
+
+    {% if not users %}
+
+        <p>
+            No users have been registered yet.
+        </p>
+
+    {% endif %}
+
+</section>
+
+
+{% for user in users %}
+
+
+<section class="card user-card">
+
+
+    <div class="user-header">
+
+        <div>
+
+            <h2>
+
+                {{ user.name }}
+
+                <small>
+                    ({{ user.user_id }})
+                </small>
+
+            </h2>
+
+
+            <p>
+
+                {{ user.age }} years
+
+                ·
+
+                {{ user.weight_kg }} kg
+
+                ·
+
+                {{ user.goal }}
+
+                ·
+
+                {{ user.intensity }}
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    {% for plan in user.plans %}
+
+
+    <details>
+
+        <summary>
+
+            Plan #{{ plan.id }}
+
+        </summary>
+
+
+        <h3>
+            Original plan
+        </h3>
+
+
+        <pre class="plan">
+{{ plan.original_plan }}
+        </pre>
+
+
+        {% if plan.updated_plan %}
+
+
+        <h3>
+            Updated plan
+        </h3>
+
+
+        <pre class="plan">
+{{ plan.updated_plan }}
+        </pre>
+
+
+        {% endif %}
+
+
+        {% if plan.feedback %}
+
+        <h3>
+            Feedback
+        </h3>
+
+
+        <p>
+            {{ plan.feedback }}
+        </p>
+
+
+        {% endif %}
+
+
+        <h3>
+            Nutrition / recovery tip
+        </h3>
+
+
+        <p>
+            {{ plan.nutrition_tip }}
+        </p>
+
+
+    </details>
+
+
+    {% endfor %}
+
+
+</section>
+
+
+{% endfor %}
+
+
+{% endblock %}
